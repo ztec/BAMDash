@@ -1,0 +1,35 @@
+{% extends "base/base.twig" %}
+{% block content %}
+    <div id="screen">
+        <div id="content">
+            <ul>
+                {% for branch in branches %}
+                    {% set states = ['plan'] %}
+                    {% set states = states|merge([branch.builds[0].state]) %}
+                    {% if branch.status.isBuilding %}
+                        {% set states = states|merge(['building']) %}
+                    {% endif %}
+                    <li class="{{ states | join(' ') }}"
+                            >{{ branch.name }}</li>
+                {% endfor %}
+            </ul>
+            <div class="updateTime">Last update :{{ time }}</div>
+        </div>
+    </div>
+    <script>
+        (function ()
+        {
+            var reload = function ()
+            {
+                var url = window.location.href + " #content";
+                $('#screen').load(url, function ()
+                {
+                    setTimeout(reload, 1000);
+                });
+
+            };
+            setTimeout(reload, 2000);
+
+        })();
+    </script>
+{% endblock %}

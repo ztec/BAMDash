@@ -1,0 +1,122 @@
+body {
+    background-color: #191919;
+    color: #e5e7ea;
+}
+
+
+#content .updateTime{
+    font-size:0.75em;
+    font-style: italic;
+    position:fixed;
+    bottom:10px;
+    right:20px;
+}
+
+#content ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+    font-size: 2em;
+}
+
+#content ul li{
+    display:block;
+    background-color: rgba(255,255,255,0.1);
+    min-height:2em;
+    line-height: 2em;
+    padding-left:90px;
+}
+
+
+
+#content ul li.Failed{
+    background-color: rgba(255,0,0,0.2);
+}
+
+#content ul li.Successful{
+    background-color: rgba(0,255,0,0.2);
+}
+#content ul li.building:before{
+    content:'';
+    background-image: url('/assets/img/364.gif');
+    display:block;
+    width:62px;
+    height:51px;
+    position:absolute;
+    left:20px;
+    margin-top:5px;
+    background-size: 100% 100%;
+
+}
+#content ul li.building{
+    background-color: rgba(255,255,255,0.2);
+    /*animation-name: building;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+
+    -webkit-animation-name: building;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+
+    -moz-animation-name: building;
+    -moz-animation-duration: 2s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: alternate;
+    -moz-animation-timing-function: ease-in-out;
+
+    -o-animation-name: building;
+    -o-animation-duration: 2s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: alternate;
+    -o-animation-timing-function: ease-in-out;*/
+}
+
+
+@-webkit-keyframes building {
+    0%   {
+        opacity: 1;
+    }
+    50%   {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-o-keyframes building {
+    0%   {
+        opacity: 1;
+    }
+    50%   {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-moz-keyframes building {
+    0%   {
+        opacity: 1;
+    }
+    50%   {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes building {
+    0%   {
+        opacity: 1;
+    }
+    50%   {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}

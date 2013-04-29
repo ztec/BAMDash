@@ -5,7 +5,9 @@
             <ul>
                 {% for branch in branches %}
                     {% set states = ['plan'] %}
-                    {% set states = states|merge([branch.builds[0].state]) %}
+                    {% if branch.builds[0] is defined %}
+                        {% set states = states|merge([branch.builds[0].state]) %}
+                    {% endif %}
                     {% if branch.status.isBuilding %}
                         {% set states = states|merge(['building']) %}
                     {% endif %}

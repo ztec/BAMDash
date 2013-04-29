@@ -22,6 +22,13 @@ $app->get(
         $allPlans = array();
         foreach ($plans->plans->plan as $plan) {
             $branches = $dao->getBranches($plan->key);
+            $builds = $dao->getBuilds($plan->key);
+            $status = $dao->getBranchStatus($plan->key);
+            $plan->builds = $builds->results->result;
+            $plan->status = $status;
+            $plan->name = $plan->name. ' master' ;
+            $plan->shortName = 'master' ;
+            $allPlans[] = $plan;
             foreach ($branches->branches->branch as $branch) {
                 if (preg_match('/' . $filter . '/', $branch->name)) {
                     $builds = $dao->getBuilds($branch->key);

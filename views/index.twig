@@ -1,8 +1,18 @@
 {% extends "base/base.twig" %}
 {% block content %}
     <div id="screen">
+        
+        {% if sortage %}                    
+            <ul id="filters">
+                <li class="link-all"><a href="#" data-filter="*">Show all</a></li>
+                <li class="link-Failed"><a href="#" data-filter=".Failed:not(.building)">Failed</a></li>
+                <li class="link-Successful"><a href="#" data-filter=".Successful">Successful</a></li>
+                <li class="link-building"><a href="#" data-filter=".building">Building</a></li>
+                <li class="link-other"><a href="#" data-filter=":not(.Failed,.Successful)">Other</a></li>
+            </ul>
+        {% endif %}
         <div id="content">
-            <ul>
+            <ul id="branchContainer">
                 {% for branch in branches %}
                     {% set states = ['plan'] %}
                     {% if branch.builds[0] is defined %}
@@ -18,7 +28,26 @@
             <div class="updateTime">Last update :{{ time }}</div>
         </div>
     </div>
-    <script>
+   
+{% endblock %}
+    
+{% block jsfiles %}
+ <script>
+        {% if sortage %}
+        $(document).ready(function(){
+            var $container = $('#branchContainer');
+            // initialize isotope
+            $container.isotope({
+              // options...
+            });
+            $('#filters a').click(function(){
+                var selector = $(this).attr('data-filter');
+                $container.isotope({ filter: selector });
+                return false;
+            });
+            
+        });
+        {% endif %}
         (function ()
         {
             var reload = function ()
@@ -26,12 +55,10 @@
                 var url = window.location.href + " #content";
                 $('#screen').load(url, function ()
                 {
-                    setTimeout(reload, 1000);
-                });
-
+                    //setTimeout(reload, 1000);
+                });        
             };
-            setTimeout(reload, 2000);
-
+            //setTimeout(reload, 2000);
         })();
     </script>
 {% endblock %}

@@ -39,13 +39,12 @@ $app->get(
                 }
             }
         }
-        $date = new \DateTime();
-        //print_r($allPlans);
         return $app['twig']->render(
             'index.twig',
             array(
+                'sortage' => false,
                 'branches' => $allPlans,
-                'time' =>$date->format('F j, Y, g:i:s a')
+                'time' =>date('F j, Y, g:i:s a')
             )
         );
     }

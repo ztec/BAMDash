@@ -1,0 +1,26 @@
+/* BASE */
+@import "base";
+/* LAYOUT */
+@import "skeleton";
+/* THEME */
+@import "theme";
+/* MODULES */
+@import "modules";
+/* STATE */
+@import "state";
+
+#content ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+    font-size: 2em;
+}
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}

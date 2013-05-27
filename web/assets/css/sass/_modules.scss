@@ -1,0 +1,53 @@
+@mixin radius($radius) {
+
+-webkit-border-radius: $radius;
+border-radius: $radius;
+}
+
+#content{padding:1em;background-color:$color-bg;clear:both;}
+#content ul li{
+    background-color: $color-standard;
+    width:100%;
+}
+#content ul li.Failed, .link-Failed{
+    background-color: $color-failed;
+}
+#content ul li.Successful, .link-Successful{
+    background-color: $color-success;
+}
+#content ul li.building, .link-building{
+    background-color: $color-building;
+}
+#content ul li.building:before{
+    content:'';
+    background-image: url('/assets/img/364.gif');
+    display:block;
+    width:62px;
+    height:51px;
+    position:absolute;
+    left:20px;
+    margin-top:5px;
+    background-size: 100% 100%;
+}
+#content .updateTime{
+    font-size:0.75em;
+    font-style: italic;
+    position:fixed;
+    bottom:10px;
+    right:20px;
+}
+
+#content ul li{
+    text-align:left;
+    min-height:2em;
+    line-height: 2em;
+    padding-left:$padding;
+    margin:0.1em 0;
+    @include radius(5px 5px 5px 5px);
+    overflow: hidden;
+    word-wrap: break-word;
+}
+#filters{width:100%;clear:both;padding-left:0;position:fixed;top:0;margin:0;z-index:10;background-color:$color-bg;}
+#filters li {width:20%;float:left;border:$color-border 1px solid;clear:right; list-style: none outside none;}
+#filters li a{color: $color-font;}
+#filters li a:hover{text-decoration:none;}

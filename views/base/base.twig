@@ -14,11 +14,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="/assets/css/normalize.min.css">
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <link rel="stylesheet" href="/BAMDash/web/assets/css/compiled/bamdash.css">
 
-    <script src="/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="/BAMDash/web/assets/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -36,7 +35,10 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
-<script src="/assets/js/main.js"></script>
+<script src="/BAMDash/web/assets/js/main.js"></script>
+{% if sortage %}
+<script src="/BAMDash/web/assets/js/vendor/jquery.isotope.min.js"></script>
+{% endif %}
 
 <script>
     var _gaq = [
@@ -48,6 +50,9 @@
         g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g, s)
     }(document, 'script'));
+     
 </script>
+
+{% block jsfiles %}{% endblock %}
 </body>
 </html>
